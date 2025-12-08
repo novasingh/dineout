@@ -6,6 +6,17 @@
 [![GitHub Issues](https://img.shields.io/github/issues/harismuneer/Restaurant-Management-System.svg?style=flat&label=Issues&maxAge=2592000)](https://www.github.com/harismuneer/Restaurant-Management-System/issues)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&label=Contributions&colorA=red&colorB=black	)](#)
 
+## Table of Contents
+- [Project Description](#project-description)
+- [Purpose](#purpose)
+- [Technologies Used](#technologies-used)
+- [Contributors](#-contributors)
+- [User Classes and Characteristics](#user-classes-and-characteristics)
+- [Screenshots](#screenshots-of-some-interfaces-and-their-description)
+- [How to Run](#how-to-run)
+- [Contributions Welcome](#contributions-welcome)
+- [License](#license)
+
 ## Project Description
 DineOut is an **Android based Restaurant Management System** that aims to digitalize the process of various restaurant operations including **ordering, billing kitchen, hall and inventory management**. 
 
@@ -17,6 +28,10 @@ would be performed in less amount of time and more efficiently. An additional be
 ## Purpose
 This application was developed as a final project for our **Software Engineering (CS303)** Course. The whole class was divided into teams of 4-5 members and each team was assigned a particular module of this Restaurant Management System. Besides coding our own module, at the end, **our team was also given the responsibility to meet other teams, discuss and resolve the issues that they are facing in the application and ultimately take their developed modules and integrate all the modules together into one working application**. This exercise made us familiar with the issues that occur during the integration of modules in real software projects like following consistent database schema, variable names, libraries versions etc.
 
+## Technologies Used
+- **Android:** The application is built for the Android platform.
+- **Java:** The primary programming language used for development.
+- **Firebase Realtime Database:** Used for real-time data storage and synchronization.
 
 ---
 ## 👨🏼‍💻 Contributors
@@ -27,6 +42,7 @@ It was really fun to work with these awesome geeks to get the job done:
 * [Mahnoor Kashif](https://github.com/mahnoorkashif)
 * [Shafaq Arshad](https://github.com/Shafaq15)
 * [Marriam Sajid](https://github.com/marriamsajid)
+* [Novasingh](https://github.com/novasingh) - Fixed configuration and setup issues
 * All members of the Software Engineering class of Spring 2018 :)
 
 ---
@@ -71,16 +87,61 @@ Hall Managers will provide its input when he marks the bill as paid when custome
 
 ## How to Run
 
-In order to have a look at the code files and understand the working, simply download this repository and open Android Studio and browse to the downloaded project and open it. It will load the project files and the code will be ready to run. 
+### Prerequisites & Configuration
 
-Before running the app, use your Google Account to register this Application on Firebase Console, with any name you want. I have provided a copy of the **Firebase Database** [Firebase Realtime DB Backup](../master/database/Firebase%20Realtime%20DB%20Backup.json). Download it and import it in the Firebase console. Then you will have a working Database for the app. After that using your Google Account, login to Android Studio. Then you can run the project.
+**Fixed by @novasingh(https://github.com/novasingh)**
 
-The login credentials for Admin, Hall and Kitchen Manager's interfaces are:
-- admin@gmail.com
-- chef@gmail.com
-- hallmanager@gmail.com
+Before running the application, ensure you have the following configuration:
 
-All have the password: 123456
+#### Required Versions:
+- **Java Version:** Java 11 (JDK 11)
+- **Gradle Version:** 3.2.1 (Android Gradle Plugin)
+- **Android SDK:** Compile SDK 27 (Android 8.1)
+
+#### Step-by-Step Setup:
+
+1. **Download & Open Project:**
+   - Download this repository
+   - Open Android Studio
+   - Browse to the downloaded project and open it
+   - Wait for Android Studio to load all project files
+
+2. **Configure Java Version in Android Studio:**
+   - Go to `File` → `Settings` (on Windows/Linux) or `Android Studio` → `Preferences` (on macOS)
+   - Navigate to `Build, Execution, Deployment` → `Build Tools` → `Gradle`
+   - Under **Gradle JDK**, select or set Java 11
+   - Click **Apply** and **OK**
+
+3. **Sync Gradle Files:**
+   - Android Studio will prompt you to sync Gradle files
+   - Click **Sync Now** or go to `File` → `Sync Project with Gradle Files`
+   - Wait for the sync to complete
+
+4. **Setup Firebase:**
+   - Use your Google Account to register this Application on [Firebase Console](https://console.firebase.google.com)
+   - Import the provided **Firebase Database** [Firebase Realtime DB Backup](../master/database/Firebase%20Realtime%20DB%20Backup.json) into your Firebase project
+   - This will create a working database for the app
+   - Update the `google-services.json` file with your Firebase configuration (place it in the `app/` directory)
+
+5. **Login to Android Studio:**
+   - Using your Google Account, login to Android Studio
+   - This enables Firebase integration
+
+6. **Run the Project:**
+   - Select an Android Emulator or connect a physical Android device
+   - Click the **Run** button (or press Shift + F10)
+
+#### Test Login Credentials:
+
+The following credentials are available for testing different user roles:
+
+| User Role | Email | Password |
+|-----------|-------|----------|
+| Admin | admin@gmail.com | 123456 |
+| Kitchen Manager | chef@gmail.com | 123456 |
+| Hall Manager | hallmanager@gmail.com | 123456 |
+
+**Note:** Ensure your Java version is set to 11 in Android Studio settings for compatibility with the Gradle version used in this project.
 
 ## Contributions Welcome
 [![GitHub Issues](https://img.shields.io/github/issues/harismuneer/Restaurant-Management-System.svg?style=flat&label=Issues&maxAge=2592000)](https://www.github.com/harismuneer/Restaurant-Management-System/issues)
@@ -133,6 +194,7 @@ Hey there, I'm <a href="https://www.linkedin.com/in/harismuneer/">Haris Muneer</
 
 
 <!-- PROFILE_INTRO_END -->
+
 
 
 
