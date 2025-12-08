@@ -89,7 +89,7 @@ Hall Managers will provide its input when he marks the bill as paid when custome
 
 ### Prerequisites & Configuration
 
-**Fixed by @novasingh(https://github.com/novasingh)**
+**Fixed by  [Novasingh](https://github.com/novasingh)**
 
 Before running the application, ensure you have the following configuration:
 
