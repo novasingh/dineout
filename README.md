@@ -118,10 +118,29 @@ Before running the application, ensure you have the following configuration:
    - Wait for the sync to complete
 
 4. **Setup Firebase:**
-   - Use your Google Account to register this Application on [Firebase Console](https://console.firebase.google.com)
+
+   ##### 4.1 Create a Firebase Project
+   - Go to the [Firebase Console](https://console.firebase.google.com)
+   - Click **Add project** and follow the on-screen instructions to create a new project
+
+   ##### 4.2 Register Your App
+   - Once your project is created, click the Android icon (</>)  on the project overview page
+   - In the **Android package name** field, enter `com.dineout`
+   - You can leave the **App nickname** and **Debug signing certificate SHA-1** fields blank for now
+   - Click **Register app**
+
+   ##### 4.3 Download google-services.json
+   - After registering, Firebase will generate a `google-services.json` file for you
+   - Click the button to download this file
+
+   ##### 4.4 Add the File to Your Project
+   - In Android Studio, switch from the Android view to the **Project view** in the top-left of the project explorer
+   - Navigate to the `app` folder (usually at `YourProjectName/app`)
+   - Drag and drop the `google-services.json` file you just downloaded into this app directory
+
+   ##### 4.5 Import Firebase Database
    - Import the provided **Firebase Database** [Firebase Realtime DB Backup](../master/database/Firebase%20Realtime%20DB%20Backup.json) into your Firebase project
    - This will create a working database for the app
-   - Update the `google-services.json` file with your Firebase configuration (place it in the `app/` directory)
 
 5. **Login to Android Studio:**
    - Using your Google Account, login to Android Studio
