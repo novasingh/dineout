@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "375306612560",
-    "firebase_url": "https://test-f4a09-default-rtdb.firebaseio.com",
-    "project_id": "test-f4a09",
-    "storage_bucket": "test-f4a09.firebasestorage.app"
+    "project_number": "252040805464",
+    "firebase_url": "https://dineout-11be0-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "dineout-11be0",
+    "storage_bucket": "dineout-11be0.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:375306612560:android:b5cbd20cdf3bdabc784655",
+        "mobilesdk_app_id": "1:252040805464:android:a5ea6a97c436bd388cde2d",
         "android_client_info": {
           "package_name": "com.dineout"
         }
@@ -16,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCi3BBJtvTFYGXgZ3zDLy6vdYxPgNKveQk"
+          "current_key": "AIzaSyAqOzJy9tQ-Sm0K32ed8MIJxvEK5TnkgPs"
         }
       ],
       "services": {
