@@ -1,0 +1,16 @@
+TestID,Title,Level,Technique,ExecutedBy,Date,Status,DefectID,Severity,Remarks
+TC-UC-01,Place order - happy path,System,Use Case Testing,QA-A,2025-12-20,Pass,,,
+TC-BV-01,Quantity boundary values,Integration,Boundary Value,QA-B,2025-12-20,Fail,DEF-001,Minor,Negative quantity accepted on older client
+TC-INV-01,Concurrent inventory consumption,System,Concurrency,QA-C,2025-12-21,Fail,DEF-002,Major,Inventory went negative under concurrent orders
+TC-PAY-01,Payment atomicity,System,State Transition,QA-A,2025-12-21,Fail,DEF-003,Critical,Order marked billed twice on retry
+TC-EMAIL-01,Email sending failure,Integration,Fault Injection,QA-B,2025-12-22,Fail,DEF-004,Major,SMTP TLS handshake timeout not handled
+TC-UI-01,Tablet reassignment race,System,State Transition,QA-C,2025-12-22,Fail,DEF-005,Major,Two tablets claimed same table under race
+TC-SEC-01,JSSE/TLS error handling,Integration,Security,QA-A,2025-12-23,Pass,,,
+TC-UNIT-01,Order.calculateTotal Unit Test,Unit,Unit Testing,Dev-1,2025-12-18,Pass,,,
+TC-INT-ADPT-01,Adapter null-checks,Integration,Static Analysis + Unit,Dev-2,2025-12-19,Pass,,,
+TC-E2E-01,Full E2E order to billing,System,E2E,QA-Team,2025-12-24,Pass,,,
+TC-RECOV-01,Recovery after Firebase disconnect,System,Fault Injection,QA-D,2025-12-24,Fail,DEF-006,Major,Order update lost when reconnecting
+TC-UT-01,Usability initial checks,Acceptance,Usability,User-Group,2025-12-24,Pass,,,
+TC-LOAD-01,Load test 200 concurrent orders,Non-functional,Load Testing,QA-Perf,2025-12-23,Fail,DEF-007,Minor,High latency under load
+TC-ACCESS-01,Accessibility checks,Non-functional,Accessibility,QA-A,2025-12-23,Pass,,,
+TC-EMAIL-02,Retry queue for unsent emails,Integration,Error Handling,QA-B,2025-12-25,Fail,DEF-008,Minor,Queue processing stalled under certain errors

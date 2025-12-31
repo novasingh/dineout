@@ -1,0 +1,36 @@
+RespondentID,AgeBracket,Role,DeviceType,Q1,Q2,Q3,Q4,Q5,Q6,Comments
+R001,18-25,Customer,Phone,5,5,4,5,4,5,Great and easy to use
+R002,26-35,Customer,Phone,4,4,4,4,4,4,Good
+R003,26-35,Customer,Tablet,5,5,5,5,5,5,Very clear
+R004,36-45,Staff,Tablet,4,3,4,4,3,4,Some lag on tablet
+R005,18-25,Customer,Phone,5,4,4,5,4,5,Like notifications
+R006,26-35,Customer,Phone,3,3,3,3,3,3,Average
+R007,36-45,Staff,Tablet,4,4,4,3,4,4,Need clearer payment status
+R008,46-55,Admin,Desktop,5,5,5,5,5,5,Admin features fine
+R009,18-25,Customer,Phone,5,4,5,4,4,5,Good
+R010,26-35,Customer,Phone,4,4,4,4,4,4,OK
+R011,26-35,Customer,Phone,5,5,5,5,5,5,Excellent
+R012,36-45,Customer,Phone,3,3,4,3,3,3,Slow under load
+R013,18-25,Customer,Phone,4,4,4,4,4,4,Good enough
+R014,26-35,Staff,Tablet,4,5,4,4,4,4,Attendance features helpful
+R015,36-45,Staff,Tablet,3,3,3,3,2,3,Needs performance improvement
+R016,46-55,Admin,Desktop,5,5,5,5,5,5,Ready for production
+R017,18-25,Customer,Phone,4,4,4,4,4,4,No issues
+R018,26-35,Customer,Phone,5,5,5,5,5,5,Great
+R019,36-45,Customer,Phone,4,4,4,3,4,4,Billing rounding minor issue
+R020,18-25,Customer,Phone,5,5,5,5,5,5,Love it
+R021,26-35,Customer,Phone,4,4,4,4,4,4,Ok
+R022,26-35,Customer,Tablet,5,5,5,4,5,5,Good UI
+R023,36-45,Staff,Tablet,4,4,4,4,4,4,Works
+R024,18-25,Customer,Phone,5,5,5,5,5,5,Smooth
+R025,26-35,Customer,Phone,4,4,4,4,4,4,Average
+R026,18-25,Customer,Phone,5,5,5,5,5,5,Great
+R027,46-55,Admin,Desktop,5,5,5,5,5,5,Very usable
+R028,36-45,Customer,Phone,3,3,3,3,3,3,Slow occasionally
+R029,26-35,Customer,Phone,4,4,4,4,4,4,Good
+R030,18-25,Customer,Phone,5,5,5,5,5,5,Excellent
+R031,26-35,Customer,Phone,4,3,4,4,4,4,Minor issues
+R032,36-45,Staff,Tablet,4,4,4,3,4,4,Ok
+R033,18-25,Customer,Phone,5,5,5,5,5,5,Perfect
+R034,26-35,Customer,Phone,4,4,4,4,4,4,Satisfied
+R035,36-45,Customer,Phone,3,3,3,3,3,3,Not great under load
