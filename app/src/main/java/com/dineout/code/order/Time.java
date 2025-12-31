@@ -3,7 +3,6 @@ package com.dineout.code.order;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -11,69 +10,28 @@ import android.widget.Toast;
 
 import com.dineout.R;
 import com.dineout.code.billing.ConfirmPayment;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
-
 public class Time extends AppCompatActivity {
-    private static long START_TIME_IN_MILLIS;  //take from kitchen - this is  30 seconds - 10 minutes
+
+    private static final long START_TIME_IN_MILLIS = 1200000; // 20 minutes
+
     private TextView mTextViewCountDown;
-    private TextView mTextViewNotif;
     private CountDownTimer mCountDownTimer;
     private boolean mTimerRunning;
-    private long mTimeLeftInMillis;
-    ArrayList<OrderDetails>orderDetail=new ArrayList<OrderDetails>();
+    private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+    private String orderId = "1"; // Assuming a static order ID for now
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_activity_time);
-        //********get value through shared preference for orderid here
 
-        final String orderid="1";
-        //get all dishes estimated time corresponding to orderid given and add up and convert to milisecs
-        DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("OrderDetails");
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                orderDetail.clear();
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    OrderDetails obj = child.getValue(OrderDetails.class);
-                    if(obj.orderid.equals(orderid)) {
-                        orderDetail.add(obj);
-                    }
-
-                    //cad.notifyDataSetChanged();
-                }
-                int sizeo=orderDetail.size();
-                int timeCount=0;
-                for(int i=0;i<sizeo;i++)
-                {
-                    timeCount=timeCount+orderDetail.get(i).getEstimatedtime();
-                }
-                Toast.makeText(getApplicationContext(), "total estimated time= "+timeCount+"minutes", Toast.LENGTH_LONG).show();
-                //Timer Settings
-                int minutes = 1;
-                long milliseconds = timeCount * 60000;
-                START_TIME_IN_MILLIS=milliseconds;
-                mTimeLeftInMillis = START_TIME_IN_MILLIS;
-                mTextViewCountDown = findViewById(R.id.countdown);
-                mTextViewNotif = findViewById(R.id.eTime);
-                startTimer();//start count down
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
+        mTextViewCountDown = findViewById(R.id.countdown);
+        startTimer();
     }
 
     private void startTimer() {
@@ -82,85 +40,62 @@ public class Time extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 mTimeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
-
             }
 
             @Override
             public void onFinish() {
                 mTimerRunning = false;
-                mTextViewNotif.setText("It's Time!");
+                mTextViewCountDown.setText("00:00");
+                Toast.makeText(Time.this, "Your order should be ready!", Toast.LENGTH_SHORT).show();
             }
         }.start();
 
         mTimerRunning = true;
     }
 
-    private void resetTimer() {
-        mTimeLeftInMillis = START_TIME_IN_MILLIS;
-        updateCountDownText();
-    }
     private void updateCountDownText() {
         int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
         int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
-
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-
         mTextViewCountDown.setText(timeLeftFormatted);
     }
 
-    //Update
-    public void onClickReg100(View v)
-    {
-        Toast.makeText(getApplicationContext(), "Redirect to Update Order", Toast.LENGTH_SHORT).show();
-        //startActivity(new Intent(Time.this,Time.class));  // changed to that interface
+    // Update Order: Navigates back to the main menu to place a new order
+    public void onClickReg100(View v) {
+        Intent intent = new Intent(Time.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish(); // Finish this activity
     }
 
-    //Cancel
-    public void onClickReg101(View v)
-    {
-        Toast.makeText(getApplicationContext(), "Redirect to Cancel Order", Toast.LENGTH_SHORT).show();
-        //startActivity(new Intent(Time.this,Time.class));  // changed to that interface
+    // Cancel Order: Deletes the order from the database and returns to the welcome screen
+    public void onClickReg101(View v) {
+        DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference("Order").child(orderId);
+        DatabaseReference orderDetailsRef = FirebaseDatabase.getInstance().getReference("OrderDetails");
+
+        orderRef.removeValue(); // Delete the main order
+
+        // Query and delete order details (assuming orderId is a direct child for simplicity)
+        orderDetailsRef.orderByChild("orderid").equalTo(orderId).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                for (com.google.firebase.database.DataSnapshot snapshot : task.getResult().getChildren()) {
+                    snapshot.getRef().removeValue();
+                }
+            }
+        });
+
+        Toast.makeText(this, "Order Cancelled", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(Time.this, WelcomePage.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish(); // Finish this activity
     }
 
-    //ViewBill
-    public void onClickReg102(View v)
-    {
+    // View Bill: Navigates to the payment screen with the correct order ID
+    public void onClickReg102(View v) {
         Intent i = new Intent(this, ConfirmPayment.class);
+        i.putExtra("orderid", orderId);
         i.putExtra("customerview", "true");
         startActivity(i);
     }
 }
-
-/*a listener that upon entering Timer table fires and disables add(plus)button
-         on menu screen till order status becomes payed depicted by value 1(int) in
-         "Order" table.status=0 in Order table shows order unpaid.Upon status 1,buttons
-         are again enabled again*//*
-        DatabaseReference refOfOrder= FirebaseDatabase.getInstance().getReference().child("Order");
-        refOfOrder.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for (DataSnapshot child : dataSnapshot.getChildren())
-                    {
-                        Order orderObj=child.getValue(Order.class);
-                        if(orderObj.orderID.equals(orderid) && orderObj.status==1)
-                        {
-                            //Enable add button on menu page
-
-
-                        }
-                        else
-                        {
-                            //disable add button on menu page
-                        }
-
-                    }
-
-
-                }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        */
